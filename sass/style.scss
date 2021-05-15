@@ -1,0 +1,28 @@
+$bgColor : #09182f;
+$primaryColor : #343a40;
+$textColor: antiquewhite;
+
+body {
+  background-color: $bgcolor;
+  color: $textcolor;
+  font-size: $fontsize;
+}
+
+header{
+    background-color: $primaryColor;
+}
+main{
+    min-height: 90vh;
+}
+
+footer{
+   background-color: $primaryColor; 
+   p : {
+      color: $textColor;
+   }
+}
+
+.hamburger-menu a svg{
+    color : $textColor;
+    border: 1px solid  $textColor;
+}

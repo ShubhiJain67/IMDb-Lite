@@ -1,0 +1,25 @@
+{
+  "name": "Mini-IMDB",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShubhiJain67/Mini-IMDB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShubhiJain67/Mini-IMDB/issues"
+  },
+  "homepage": "https://github.com/ShubhiJain67/Mini-IMDB#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.9",
+    "request": "^2.88.2",
+    "sass": "^1.32.13"
+  }
+}
