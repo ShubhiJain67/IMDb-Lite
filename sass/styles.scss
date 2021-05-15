@@ -1,0 +1,60 @@
+$bgColor: #09182f;
+$primaryColor: #343a40;
+$textColor: antiquewhite;
+
+h1 {
+	font-size: 40px;
+}
+h2 {
+	font-size: 32px;
+}
+h3 {
+	font-size: 28px;
+}
+p, td {
+	font-size: 24px;
+}
+
+body {
+	background-color: $bgColor;
+	color: $textColor;
+}
+
+header {
+	background-color: $primaryColor;
+}
+main {
+	min-height: 80vh;
+    .section-container{
+        margin: auto;
+        padding: 30px;
+
+        .section-table{
+            margin-top: 20px;
+            border: 2px solid $textColor;
+            border-radius: 10px;
+            td{
+                padding: 20px;
+            }
+            a{
+                color: $textColor;
+                text-decoration: none;
+            }
+        }
+    }    
+}
+
+footer {
+	min-height: 10vh;
+    padding: 20px;
+	background-color: $primaryColor;
+    margin: auto;
+    text-align: center;
+	p : {
+	}
+}
+
+.hamburger-menu a svg {
+	color: $textColor;
+	border: 1px solid $textColor;
+}
