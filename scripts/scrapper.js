@@ -6,7 +6,7 @@ let $;
 let $movie;
 
 function webScrapper(genre, url, nextSelector, dataItemSelector, dataSelector, pageCount = 1, maxPagesReuired = 1, recordsPerPage = 50){
-    if(genre != ''){
+    if(url.split('?').length == 1 && genre != ''){
         url = `${url}?genres=${genre}`;
     }
     dataList = [];
@@ -81,7 +81,11 @@ function scrapeViaGerner(genre = '', movieCount = 50){
     if(genre == ''){
         genre = genres[Math.floor(Math.random() * genres.length)];
     }
-    webScrapper(genre, url, next, movieItem, movieData, 1, Math.ceil(movieCount/50));
+    pageCount = 1;
+    totalPageCount =  Math.ceil(movieCount/50);
+    if(pageCount <= totalPageCount){
+        webScrapper(genre, url, next, movieItem, movieData, pageCount, totalPageCount);
+    }
 }
 
-scrapeViaGerner('', 200);
+scrapeViaGerner('', 70);
