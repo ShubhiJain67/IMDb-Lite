@@ -44,6 +44,33 @@ main {
     }    
 }
 
+.movie-container{
+    padding: 20px;
+
+    h2{
+        padding: 20px 0px;
+    }
+    .movie-item{
+        border: 2px solid $textColor;
+        margin-bottom: 20px;
+        padding: 20px;
+
+        h3{
+            span{
+                color: $textColor;
+                font-size: 24px;
+                font-weight: 20;
+            }
+        }
+        .movie-image{
+
+            img{
+                margin: auto;
+            }
+        }
+    }
+}
+
 footer {
 	min-height: 10vh;
     padding: 20px;
@@ -54,7 +81,10 @@ footer {
 	}
 }
 
-.hamburger-menu a svg {
-	color: $textColor;
-	border: 1px solid $textColor;
+.hamburger-menu {
+    margin: auto;
+    a svg {
+        color: $textColor;
+        border: 1px solid $textColor;
+    }
 }

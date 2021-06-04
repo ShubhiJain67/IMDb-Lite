@@ -47,12 +47,40 @@ main .section-container .section-table a {
   text-decoration: none;
 }
 
+.movie-container {
+  padding: 20px;
+}
+
+.movie-container h2 {
+  padding: 20px 0px;
+}
+
+.movie-container .movie-item {
+  border: 2px solid antiquewhite;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.movie-container .movie-item h3 span {
+  color: antiquewhite;
+  font-size: 24px;
+  font-weight: 20;
+}
+
+.movie-container .movie-item .movie-image img {
+  margin: auto;
+}
+
 footer {
   min-height: 10vh;
   padding: 20px;
   background-color: #343a40;
   margin: auto;
   text-align: center;
+}
+
+.hamburger-menu {
+  margin: auto;
 }
 
 .hamburger-menu a svg {
