@@ -1,34 +1,31 @@
 let request = require('request');
 let cheerio = require('cheerio');
-let fileSystem = require('fs');
-
 let $;
 let $movie;
 
-function webScrapper(genre, url, nextSelector, dataItemSelector, dataSelector, pageCount = 1, maxPagesReuired = 1, recordsPerPage = 50){
-    if(url.split('?').length == 1 && genre != ''){
-        url = `${url}?genres=${genre}`;
+function webScrapper(type, typeData, url, nextSelector, dataItemSelector, dataSelector, pageCount = 1, maxPagesReuired = 1, recordsPerPage = 50, domain = 'https://www.imdb.com'){
+    if(url.split('?').length == 1 && typeData != ''){
+        url = `${url}?${type}=${typeData}`;
+    }
+    else if(!url.includes(`?${type}`)){
+        url = `${url}&${type}=${typeData}`;
     }
     dataList = [];
-    //let urlItems = url.split('?')[0].split('/');
-    //let pageName = urlItems[urlItems.length - 1];
-    // if(pageName == ''){
-    //     pageName = 'text';
-    // }
     request(url, function (error, response, body){
         if(error == null){
             if(response && response.statusCode == 200){
                 console.log("" + pageCount + " : Scrapping : " + url)
                 $ = cheerio.load(body)
-                //fileSystem.writeFileSync(`${fileSystem}.html`, body);
                 let nextSet = $(nextSelector);
                 let dataSet = $(dataItemSelector);
                 for(let r = 0; r < dataSet.length; r++){
                     $movie = cheerio.load($(dataSet[r]).html());
                     dataList.push({
-                        'RequestedGenre' : genre,
+                        'RequestedType' : type,
+                        'RequstedData' : typeData,
                         'Name' : $movie(dataSelector.Name).length > 0 ? $movie($movie(dataSelector.Name)[0]).html() : '',
                         'Index' : $movie(dataSelector.Index).length > 0 ? $movie($movie(dataSelector.Index)[0]).html() : '',
+                        'RunTime' : $movie(dataSelector.RunTime).length > 0 ? $movie($movie(dataSelector.RunTime)[0]).html() : '',
                         'Year' : $movie(dataSelector.Year).length > 0 ? $movie($movie(dataSelector.Year)[0]).html() : '',
                         'Genre' : $movie(dataSelector.Genre).length > 0 ? $movie($movie(dataSelector.Genre)[0]).html() : '',
                         'Certificate' : $movie(dataSelector.Certificate).length > 0 ? $movie($movie(dataSelector.Certificate)[0]).html() : '',
@@ -40,10 +37,10 @@ function webScrapper(genre, url, nextSelector, dataItemSelector, dataSelector, p
                 console.log(dataList);
                 if(pageCount < maxPagesReuired){
                     if($(nextSet[0]).attr('href') != undefined){
-                        webScrapper(genre, `https://www.imdb.com` + $(nextSet[0]).attr('href'), nextSelector,dataItemSelector, dataSelector , pageCount + 1, maxPagesReuired);
+                        webScrapper(type, typeData, `${domain}` + $(nextSet[0]).attr('href'), nextSelector,dataItemSelector, dataSelector , pageCount + 1, maxPagesReuired);
                     }
                     else{
-                        webScrapper(genre, `${url.split('&')[0]}&start=${pageCount*recordsPerPage + 1}`, nextSelector,dataItemSelector, dataSelector , pageCount + 1, maxPagesReuired)
+                        webScrapper(type, typeData, `${url.split('&')[0]}&start=${pageCount*recordsPerPage + 1}`, nextSelector,dataItemSelector, dataSelector , pageCount + 1, maxPagesReuired)
                     }
                 }
             }
@@ -63,13 +60,14 @@ function webScrapper(genre, url, nextSelector, dataItemSelector, dataSelector, p
     });
 }
 
-function scrapeViaGerner(genre = '', movieCount = 50){
+function scrapeViaGerner(type = dataType.Genre.Name , dataType = '', movieCount = 50){
     //let next = '.lister-page-next.next-page';
     let next = '';
     let movieData = {
         'Name' : '.lister-item-header a',
         'Index' : '.lister-item-header .lister-item-index',
         'Year' : '.lister-item-header .lister-item-year',
+        'RunTime' : '.text-muted .runtime',
         'Genre' : '.text-muted .genre',
         'Certificate' : '.text-muted .certificate',
         'Rating' : '.ratings-bar strong',
@@ -77,15 +75,72 @@ function scrapeViaGerner(genre = '', movieCount = 50){
     }
     let movieItem = '.lister-item.mode-advanced'
     let url = `https://www.imdb.com/search/title/`
-    let genres = ['action', 'drama', 'crime', 'adventure', 'thriller', 'romance', 'comedy', 'fantasy', 'sci-fi', 'mystery', 'animation', 'family','short','war','history','horror', 'sport','western','biography','music','musical', 'reality-tv','documentary','news','talk-show','game-show','film-noir']
-    if(genre == ''){
-        genre = genres[Math.floor(Math.random() * genres.length)];
+    if(dataType == ''){
+        if(type == dataType.Genre.Name){
+            dataType = dataType.Genre.Default;
+        }
+        else{
+            dataType = dataType.TitleType.Default;
+        }
     }
     pageCount = 1;
     totalPageCount =  Math.ceil(movieCount/50);
     if(pageCount <= totalPageCount){
-        webScrapper(genre, url, next, movieItem, movieData, pageCount, totalPageCount);
+        webScrapper(type, dataType, url, next, movieItem, movieData, pageCount, totalPageCount);
     }
 }
 
-scrapeViaGerner('', 70);
+dataTypes = {
+    Genre :{
+        Name : 'genres',
+        Default : 'action',
+        Types : {
+            Action : 'action',
+            Drama : 'drama',
+            Crime : 'crime',
+            Adventure : 'adventure',
+            Thriller : 'thriller',
+            Romance : 'romance',
+            Comedy : 'comedy',
+            fantasy : 'fantasy',
+            SciFi : 'sci-fi',
+            Mystery : 'mystery',
+            Animation : 'animation',
+            Family : 'family',
+            Short : 'short',
+            War : 'war',
+            History : 'history',
+            Horror :'horror',
+            Sport : 'sport',
+            Western : 'western',
+            Biography : 'biography',
+            Music : 'music',
+            Musical : 'musical',
+            RealityTV : 'reality-tv',
+            Documentary : 'documentary',
+            News : 'news',
+            TalkShow : 'talk-show',
+            GameShow : 'game-show',
+            FilmNoir : 'film-noir'
+        }
+    },
+    TitleType :{
+        Name : 'title_type',
+        Default : 'tvEpisode',
+        Types : {
+            TVEpisode : 'tvEpisode',
+            Movie : 'movie',
+            Short : 'short',
+            VideoGame : 'videoGame',
+            Video : 'video',
+            TvSeries : 'tvSeries',
+            TvMovie : 'tvMovie',
+            TvMiniSeries : 'tvMiniSeries',
+            TvSpecial : 'tvSpecial',
+            TvShort : 'tvShort'
+        }
+    }
+}
+
+//scrapeViaGerner(dataTypes.Genre.Name, dataTypes.Genre.Types.History, 70);
+scrapeViaGerner(dataTypes.TitleType.Name, dataTypes.TitleType.Types.Movie, 70);
