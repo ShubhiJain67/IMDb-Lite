@@ -1,0 +1,67 @@
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+p, td {
+  font-size: 24px;
+}
+
+body {
+  background-color: #09182f;
+  color: antiquewhite;
+}
+
+.movie-container {
+  padding: 20px;
+}
+
+.movie-container h2 {
+  padding: 20px 0px;
+}
+
+.movie-container .movie-item {
+  border: 2px solid antiquewhite;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.movie-container .movie-item h3 {
+  padding-bottom: 10px;
+  border-bottom: 2px solid antiquewhite;
+}
+
+.movie-container .movie-item h3 span {
+  color: antiquewhite;
+  font-size: 24px;
+  font-weight: 20;
+}
+
+.movie-container .movie-item .movie-image img {
+  margin: auto;
+}
+
+@media screen and (max-width: 480px) {
+  .movie-container {
+    padding: 20px;
+  }
+  .movie-container h2 {
+    text-align: center;
+  }
+  .movie-container .movie-item .movie-image {
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  .movie-container .movie-item .movie-basic-info {
+    text-align: center;
+    padding: 10px 0px;
+  }
+}
+/*# sourceMappingURL=result.css.map */

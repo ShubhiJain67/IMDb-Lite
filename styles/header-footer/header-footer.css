@@ -1,0 +1,42 @@
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+p, td {
+  font-size: 24px;
+}
+
+body {
+  background-color: #09182f;
+  color: antiquewhite;
+}
+
+header {
+  background-color: #343a40;
+}
+
+.hamburger-menu {
+  margin: auto;
+}
+
+.hamburger-menu a svg {
+  color: antiquewhite;
+  border: 1px solid antiquewhite;
+}
+
+footer {
+  min-height: 10vh;
+  padding: 20px;
+  background-color: #343a40;
+  margin: auto;
+  text-align: center;
+}
+/*# sourceMappingURL=header-footer.css.map */

@@ -1,0 +1,45 @@
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+p, td {
+  font-size: 24px;
+}
+
+body {
+  background-color: #09182f;
+  color: antiquewhite;
+}
+
+main {
+  min-height: 80vh;
+}
+
+main .section-container {
+  margin: auto;
+  padding: 30px;
+}
+
+main .section-container .section-table {
+  margin-top: 20px;
+  border: 2px solid antiquewhite;
+  border-radius: 10px;
+}
+
+main .section-container .section-table td {
+  padding: 20px;
+}
+
+main .section-container .section-table a {
+  color: antiquewhite;
+  text-decoration: none;
+}
+/*# sourceMappingURL=index.css.map */

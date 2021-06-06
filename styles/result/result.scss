@@ -1,0 +1,54 @@
+// --------------------------------------- Result Start ----------------------------------------------------
+
+@import '../styles/base.scss';
+
+.movie-container{
+    padding: 20px;
+
+    h2{
+        padding: 20px 0px;
+    }
+    .movie-item{
+        border: 2px solid $textColor;
+        margin-bottom: 20px;
+        padding: 20px;
+
+        h3{
+            padding-bottom: 10px;
+            border-bottom: 2px solid $textColor;
+            span{
+                color: $textColor;
+                font-size: 24px;
+                font-weight: 20;
+            }
+        }
+        .movie-image{
+
+            img{
+                margin: auto;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .movie-container{
+        padding: 20px;
+    
+        h2{
+            text-align: center;
+        }
+        .movie-item{
+            .movie-image{
+                text-align: center;
+                padding-bottom: 20px;
+            }
+            .movie-basic-info{
+                text-align: center;
+                padding: 10px 0px;
+            }
+        }
+    }
+}
+
+// --------------------------------------- Result End ----------------------------------------------------
