@@ -20,6 +20,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.9",
     "request": "^2.88.2",
+    "require": "^2.4.20",
     "sass": "^1.32.13"
   }
 }

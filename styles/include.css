@@ -19,20 +19,20 @@ body {
   color: antiquewhite;
 }
 
-header {
+custom-header header {
   background-color: #343a40;
 }
 
-.hamburger-menu {
+custom-header .hamburger-menu {
   margin: auto;
 }
 
-.hamburger-menu a svg {
+custom-header .hamburger-menu a svg {
   color: antiquewhite;
   border: 1px solid antiquewhite;
 }
 
-footer {
+custom-footer footer {
   min-height: 10vh;
   padding: 20px;
   background-color: #343a40;
@@ -142,12 +142,15 @@ body {
   .movie-container h2 {
     text-align: center;
   }
+  .movie-container .movie-item h3 {
+    text-align: center;
+    padding-bottom: 20px;
+  }
   .movie-container .movie-item .movie-image {
     text-align: center;
     padding-bottom: 20px;
   }
   .movie-container .movie-item .movie-basic-info {
-    text-align: center;
     padding: 10px 0px;
   }
 }

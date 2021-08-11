@@ -55,12 +55,15 @@ body {
   .movie-container h2 {
     text-align: center;
   }
+  .movie-container .movie-item h3 {
+    text-align: center;
+    padding-bottom: 20px;
+  }
   .movie-container .movie-item .movie-image {
     text-align: center;
     padding-bottom: 20px;
   }
   .movie-container .movie-item .movie-basic-info {
-    text-align: center;
     padding: 10px 0px;
   }
 }

@@ -1,27 +1,31 @@
 // --------------------------------------- Header Footer Start ----------------------------------------------------
 
-@import '../styles/base.scss';
+@import '../base/base.scss';
 
-header {
-	background-color: $primaryColor;
-}
-
-.hamburger-menu {
-    margin: auto;
-    a svg {
-        color: $textColor;
-        border: 1px solid $textColor;
+custom-header{
+    header {
+        background-color: $primaryColor;
+    }
+    
+    .hamburger-menu {
+        margin: auto;
+        a svg {
+            color: $textColor;
+            border: 1px solid $textColor;
+        }
     }
 }
 
-footer {
-	min-height: 10vh;
-    padding: 20px;
-	background-color: $primaryColor;
-    margin: auto;
-    text-align: center;
-	p : {
-	}
+custom-footer{
+    footer {
+        min-height: 10vh;
+        padding: 20px;
+        background-color: $primaryColor;
+        margin: auto;
+        text-align: center;
+        p : {
+        }
+    }
 }
 
 // --------------------------------------- Header Footer End ----------------------------------------------------
